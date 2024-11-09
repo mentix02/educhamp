@@ -1,0 +1,10 @@
+[report]
+exclude_lines =
+    pass
+    def __repr__
+    pragma: no cover
+    raise RuntimeError
+    raise AssertionError
+    @(abc\.)?abstractmethod
+    raise NotImplementedError
+    if __name__ == .__main__.:

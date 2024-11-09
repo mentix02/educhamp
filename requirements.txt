@@ -1,0 +1,11 @@
+sanic~=24.6.0
+tinydb~=4.8.2
+pytest~=8.3.3
+openai~=1.54.3
+pydantic~=2.9.2
+coverage~=7.6.4
+aiotinydb~=2.0.0
+sanic-ext~=23.12.0
+python-decouple~=3.8
+sanic-testing~=24.6.0
+pytest-asyncio~=0.24.0
