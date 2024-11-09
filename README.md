@@ -1,6 +1,7 @@
 # Educhamp Assignment
 
 [![Educhamp](https://github.com/mentix02/educhamp/actions/workflows/python-app.yml/badge.svg)](https://github.com/mentix02/educhamp/actions/workflows/python-app.yml)
+[![Coverage badge](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=coverage&query=%24.message&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmentix02%2Feduchamp%2Fpython-coverage-comment-action-data%2Fendpoint.json)](https://htmlpreview.github.io/?https://github.com/mentix02/educhamp/blob/python-coverage-comment-action-data/htmlcov/index.html)
 
 Simple breakdown of the codebase:
 
