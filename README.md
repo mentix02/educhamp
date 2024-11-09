@@ -1,5 +1,7 @@
 # Educhamp Assignment
 
+[![Educhamp](https://github.com/mentix02/educhamp/actions/workflows/python-app.yml/badge.svg)](https://github.com/mentix02/educhamp/actions/workflows/python-app.yml)
+
 Simple breakdown of the codebase:
 
 1. [`server.py`](server.py) - Contains the main server code with the API endpoints.
