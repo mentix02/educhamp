@@ -81,3 +81,22 @@ def test_statistic_update(app: Sanic, db: TinyDB) -> None:
     assert doc["mean"] == approx(mean)
     assert doc["median"] == approx(median)
     assert doc["std_dev"] == approx(std_dev)
+
+
+def test_fetch_stats(app: Sanic, db: TinyDB) -> None:
+    payload = make_payload()
+    test_client: SanicTestClient = app.test_client
+
+    # Create a new entry in the database
+    _, resp = test_client.post("/process-survey", json=payload)
+    assert resp.status == 200
+
+    _, resp = test_client.get("/stats", params={"user_id": payload["user_id"]})
+    assert resp.status == 200
+
+    doc = db.get(where("user_id") == payload["user_id"])  # noqa
+    resp_data = resp.json
+
+    assert resp_data["mean"] == approx(doc["mean"])
+    assert resp_data["median"] == approx(doc["median"])
+    assert resp_data["std_dev"] == approx(doc["std_dev"])

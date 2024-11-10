@@ -79,3 +79,10 @@ def test_invalid_question_values(app: Sanic, db: TinyDB) -> None:
 
     assert resp.status == 400
     assert before_count == after_count
+
+
+def test_fetch_invalid_stats(app: Sanic, db: TinyDB) -> None:
+    test_client: SanicTestClient = app.test_client
+
+    _, resp = test_client.get("/stats", params={"user_id": "does_not_exist"})
+    assert resp.status == 404

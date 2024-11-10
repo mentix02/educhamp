@@ -116,3 +116,9 @@ class Statistics(BaseModel):
             median=statistics.median(result.question_value for result in payload.survey_results),
             std_dev=statistics.stdev(result.question_value for result in payload.survey_results),
         )
+
+
+class StatisticsQuery(BaseModel):
+    user_id: str
+
+    model_config = ConfigDict(strict=True)

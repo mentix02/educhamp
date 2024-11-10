@@ -3,13 +3,14 @@ import sys
 import pathlib
 
 from sanic import Sanic
-from sanic_ext import validate
 from sanic.request import Request
+from sanic_ext import validate, Extend
 from sanic.response import json, JSONResponse
 
+from tinydb import where
 from aiotinydb import AIOTinyDB
 
-from models import Payload, Insights, Statistics
+from models import Payload, Insights, Statistics, StatisticsQuery
 
 
 BASE_DIR = pathlib.Path(__file__).parent
@@ -22,6 +23,9 @@ else:
 
 def create_app() -> Sanic:
     app = Sanic("educhamp")
+
+    app.config.CORS_ORIGINS = ["http://localhost:5173"]
+    Extend(app)
 
     if "COVERAGE_RUN" in os.environ:
         # Sanic generates source code on the fly. This is a workaround to make sure coverage.py
@@ -47,6 +51,15 @@ def create_app() -> Sanic:
             await request.app.dispatch("survey.secondary_analysis.generate", context=context)
 
         return json(insight_json)
+
+    @app.route("/stats")
+    @validate(query=StatisticsQuery)
+    async def stats(request: Request, query: StatisticsQuery) -> JSONResponse:
+        async with AIOTinyDB(DB_PATH) as db:
+            doc = db.get(where("user_id") == query.user_id)  # noqa
+            if doc is None:
+                return json({"message": "User not found"}, status=404)
+            return json({"mean": doc["mean"], "median": doc["median"], "std_dev": doc["std_dev"]})
 
     return app
 
