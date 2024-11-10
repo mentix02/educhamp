@@ -5,14 +5,14 @@
 | Name                  |    Stmts |     Miss |   Cover |   Missing |
 |---------------------- | -------: | -------: | ------: | --------: |
 | description.py        |       16 |        6 |     62% |     14-26 |
-| models.py             |       62 |        0 |    100% |           |
-| server.py             |       33 |        0 |    100% |           |
+| models.py             |       65 |        0 |    100% |           |
+| server.py             |       44 |        0 |    100% |           |
 | tests/\_\_init\_\_.py |        0 |        0 |    100% |           |
 | tests/conftest.py     |       12 |        0 |    100% |           |
 | tests/payload.py      |       13 |        0 |    100% |           |
-| tests/test\_bad.py    |       36 |        0 |    100% |           |
-| tests/test\_good.py   |       50 |        0 |    100% |           |
-|             **TOTAL** |  **222** |    **6** | **97%** |           |
+| tests/test\_bad.py    |       40 |        0 |    100% |           |
+| tests/test\_good.py   |       62 |        0 |    100% |           |
+|             **TOTAL** |  **252** |    **6** | **98%** |           |
 
 
 ## Setup coverage badge
