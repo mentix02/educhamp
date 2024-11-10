@@ -6,13 +6,13 @@
 |---------------------- | -------: | -------: | ------: | --------: |
 | description.py        |       16 |        6 |     62% |     14-26 |
 | models.py             |       65 |        0 |    100% |           |
-| server.py             |       44 |        0 |    100% |           |
+| server.py             |       49 |        2 |     96% |     67-68 |
 | tests/\_\_init\_\_.py |        0 |        0 |    100% |           |
 | tests/conftest.py     |       12 |        0 |    100% |           |
 | tests/payload.py      |       13 |        0 |    100% |           |
 | tests/test\_bad.py    |       40 |        0 |    100% |           |
 | tests/test\_good.py   |       62 |        0 |    100% |           |
-|             **TOTAL** |  **252** |    **6** | **98%** |           |
+|             **TOTAL** |  **257** |    **8** | **97%** |           |
 
 
 ## Setup coverage badge
