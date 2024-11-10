@@ -5,7 +5,7 @@ import pathlib
 from sanic import Sanic
 from sanic.request import Request
 from sanic_ext import validate, Extend
-from sanic.response import json, JSONResponse
+from sanic.response import html, json, JSONResponse
 
 from tinydb import where
 from aiotinydb import AIOTinyDB
@@ -14,6 +14,8 @@ from models import Payload, Insights, Statistics, StatisticsQuery
 
 
 BASE_DIR = pathlib.Path(__file__).parent
+ASSETS_DIR = BASE_DIR / "ui/dist/assets"
+TEMPLATE_DIR = BASE_DIR / "ui/dist"
 
 if any("test" in arg for arg in sys.argv):
     DB_PATH = BASE_DIR / "db_test.json"
@@ -52,7 +54,7 @@ def create_app() -> Sanic:
 
         return json(insight_json)
 
-    @app.route("/stats")
+    @app.get("/stats")
     @validate(query=StatisticsQuery)
     async def stats(request: Request, query: StatisticsQuery) -> JSONResponse:
         async with AIOTinyDB(DB_PATH) as db:
@@ -60,6 +62,10 @@ def create_app() -> Sanic:
             if doc is None:
                 return json({"message": "User not found"}, status=404)
             return json({"mean": doc["mean"], "median": doc["median"], "std_dev": doc["std_dev"]})
+
+    if ASSETS_DIR.exists():
+        app.static("/assets", str(ASSETS_DIR), name="assets")
+        app.static("/", str(TEMPLATE_DIR / "index.html"), name="index")
 
     return app
 

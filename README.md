@@ -26,6 +26,20 @@ pip install -r requirements.txt
 sanic "server:create_app"
 ```
 
+**Note** - this only runs the API server. To build the UI, make sure to have Node 19+ installed on your system.
+Then run the following - 
+
+```shell
+# Install the dependencies
+cd ui && npm i
+# Build the UI
+npm run build
+```
+
+Rerun the server (`sanic "server:create_app"`) to see the changes.
+
+Visit [http://localhost:8000](http://localhost:8000) to view the UI.
+
 ## Testing
 
 We use [pytest](https://docs.pytest.org/en/stable/). To run the tests, use the following command (sets up the PYTHONPATH for you):
