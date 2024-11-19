@@ -5,7 +5,7 @@ import pathlib
 from sanic import Sanic
 from sanic.request import Request
 from sanic_ext import validate, Extend
-from sanic.response import html, json, JSONResponse
+from sanic.response import json, JSONResponse
 
 from tinydb import where
 from aiotinydb import AIOTinyDB
